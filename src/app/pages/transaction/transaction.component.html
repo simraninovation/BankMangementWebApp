@@ -1,0 +1,35 @@
+
+<div class="backdrop">
+    <div class="">
+      <!-- <div class="row"> -->
+        
+          <div class="col-md-12">
+            <h1 class="tile">Transaction Details</h1>
+            <div class="card-body">
+                <table class="table table-bordered table-striped"  style="width:100%">
+                  <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Amount </th>
+                        <th scope="col">Message</th>         
+                        <th scope="col">Amount</th>              
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor=" let transaction of rows">
+                        <td>{{ transaction.createdDate }}</td>
+                        <td>{{ transaction.message }}</td>
+                        <td>{{ transaction.amount }}</td>
+                    
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+  
+  
+  
+  
+              
+                 
+                   
+                

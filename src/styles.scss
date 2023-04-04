@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "proxima_nova_rgregular", Helvetica, Arial, sans-serif; }
+h1{
+   font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
+}
+@font-face {
+    font-family: proxima_nova;
+    src: url('../src/assets/fonts/Proxima-Nova-Font.otf');
+}

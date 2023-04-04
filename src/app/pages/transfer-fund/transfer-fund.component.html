@@ -1,0 +1,72 @@
+<!-- Grey with black text -->
+<!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/">myBank</a>
+                </li>
+                <li class="nav-item">
+
+                    <a class="nav-link" routerLink="/login">Login</a>
+                </li>
+                <li class="nav-item">
+
+                    <a class="nav-link" routerLink="/signup">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav> -->
+
+
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-6 offset-md-3">
+
+                <div class="logo-container text-center">
+                    <img src="../../../assets/signuplogo.jpg" alt="" />
+                </div>
+                <h1 class="text-center">Transfer Here !!</h1>
+
+                <form class="text-center" (ngSubmit)="formSubmit()">
+                    <div class="main-form">
+                    <!--username field-->
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Account Number</mat-label>
+                        <input matInput class="text-act" [(ngModel)]="fund.AccountNumber" name="AccountNumber" matInput placeholder="Enter here" disabled>
+                    </mat-form-field>
+                    <br>
+
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label >IFSC</mat-label>
+                        <input matInput class="text-ifsc" [(ngModel)]="fund.IFSC" name="IFSC" matInput placeholder="Enter here" disabled>
+                    </mat-form-field>
+                    <br>
+
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Amount</mat-label>
+                        <input matInput class="text-amt" [(ngModel)]="fund.Amount" name="Amount" matInput placeholder="Enter here">
+                    </mat-form-field>
+
+                </div>
+                    
+
+                    
+                    <br>
+                    <div class="submit-form ">
+                        <button mat-raised-button color="primary" type="submit">Transfer</button>
+                        <button style="margin-left:20px" mat-raised-button color="primary">Clear</button>
+                    </div>
+                </form>
+                <br/>
+                <br/>
+                <br/>
+                <label *ngIf="isError" class="error">{{error}}</label>
+            </div>
+        </div>
+    </div>
+
+</div>

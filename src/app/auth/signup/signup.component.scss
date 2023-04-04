@@ -1,0 +1,27 @@
+html,
+body{
+    height: 100%;
+}
+body{
+    margin:0;
+    font-family: Robto, "Helvetica Neue", sans-serif;
+}
+.text-center{
+    text-align: center;
+   
+}
+img {
+   width: 70px;
+   height: 90px; 
+
+}
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+
+}
+.full-width{
+    width:70%;
+}

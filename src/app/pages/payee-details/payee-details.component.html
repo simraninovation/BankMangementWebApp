@@ -1,0 +1,39 @@
+<div class="backdrop">
+    <div class="">
+      <!-- <div class="row"> -->
+        
+          <div class="col-md-12">
+   
+            <h1 class="tile">Payee Details</h1>
+            <div class="card-body">
+                <table class="table table-bordered table-striped"  style="width:100%">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Account Number </th>
+                      <th scope="col">IFSC</th>
+                      <th scope="col">Name</th> 
+                      <th scope="col">Action</th>       
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor=" let payee of rows">                 
+                      <td>{{ payee.accountNumber  }}</td>
+                      <td>{{ payee.ifsc }}</td>
+                      <td>{{ payee.name }}</td>
+                      <td><button class="btn-btn-primary" mat-button class="menu-button" [routerLink]="['/app/transfer',{accountNumber:payee.accountNumber,ifsc:payee.ifsc}]" routerLinkActive="router-link-active" >Transfer</button></td>
+                  
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+
+
+
+            
+               
+                   
+    </div>
+  </div>
+  </div>

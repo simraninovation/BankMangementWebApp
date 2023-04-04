@@ -1,0 +1,40 @@
+<mat-toolbar class="mat-elevation-z8 custom-top">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+</mat-toolbar>
+<mat-sidenav-container [ngClass]="{'mat-sidenav-container mat-drawer-content mat-sidenav-content ng-star-inserted': matSidenavContainer,'mat-sidenav-container-remove':matsidenavContainerRemove}">
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+
+        <br>
+        <h1 class="name"><b></b></h1>        
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" [routerLink]="['/app/home']" routerLinkActive="router-link-active">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="['/app/accountManagement/accountDetails']" routerLinkActive="router-link-active" >
+            <mat-icon>person</mat-icon>
+            <span>Account Details</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="['/app/balance']" routerLinkActive="router-link-active" >            
+            <mat-icon>assignment_turned_in</mat-icon>
+            <span>Balance</span>
+        </button>
+       <mat-divider></mat-divider>       
+        <button mat-button class="menu-button" [routerLink]="['/app/transaction']" routerLinkActive="router-link-active"  >
+            <mat-icon>assignment_ind</mat-icon>
+            <span>Transactions</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="['/app/payeeDetails']" routerLinkActive="router-link-active" >
+            <mat-icon>assignment</mat-icon>
+            <span>Transfer Money</span>
+        </button>
+        
+        </mat-sidenav>
+</mat-sidenav-container>

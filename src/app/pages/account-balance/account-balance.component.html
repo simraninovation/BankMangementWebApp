@@ -1,0 +1,36 @@
+<div class="backdrop">
+    <div class="">
+      <!-- <div class="row"> -->
+        
+          <div class="col-md-12">
+   
+            <h1 class="tile">Balance Details</h1>
+            <div class="card-body">
+                <table class="table table-bordered table-striped"  style="width:100%">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Account </th>
+                      <th scope="col">Balance</th>
+                                 
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor=" let account of rows">                 
+                      <td>{{ account.id  }}</td>
+                      <td>{{ account.balance }}</td>
+                  
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+
+
+
+            
+               
+                   
+    </div>
+  </div>
+  </div>
