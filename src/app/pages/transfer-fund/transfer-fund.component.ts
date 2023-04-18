@@ -43,7 +43,8 @@ export class TransferFundComponent implements OnInit {
   formSubmit() {
 
     this.accountService.getAccountByNumber(this.fund.AccountNumber).subscribe(data => {
-      console.log(data)
+      console.log(this.fund)
+      console.log("this-->",data)
       if(data == null || data == undefined){
         this.isError = true
         this.error = "Account Number Not Found"
@@ -60,19 +61,17 @@ export class TransferFundComponent implements OnInit {
           this.error = "Insufficient Funds In Account"
         }
         else{
-          //console.log("********* ", parseInt(this.fund.AccountNumber) - parseInt(this.currentUserBalance))
+          console.log("********* ", parseInt(this.fund.AccountNumber) - parseInt(this.currentUserBalance))
           this.currentUserBalance = parseInt(this.currentUserBalance) - parseInt(this.fund.Amount)
           console.log("-------------------->",this.transferUserId)
           this.dataUpdate.id = this.transferUserId
           this.dataUpdate.balance = this.transferUserBalance
-          this.accountService.updateAccountBalance(this.dataUpdate).subscribe(response => {
-            console.log(response)
-          })
+          console.log(this.dataUpdate)
+          this.accountService.updateAccountBalance(this.dataUpdate).subscribe((data)=>{})
           this.dataUpdate.id = this.accountUserId
           this.dataUpdate.balance = this.currentUserBalance
-          this.accountService.updateAccountBalance(this.dataUpdate).subscribe(response => {
-            console.log(response)
-          })
+          this.accountService.updateAccountBalance(this.dataUpdate).subscribe((data)=>{})
+         
         }
         
         })

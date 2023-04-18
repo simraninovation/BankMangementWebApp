@@ -1,0 +1,50 @@
+
+
+
+         
+   
+ 
+   
+   
+    
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Details for payee</h5>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modalRef.close()"
+        ></button>
+      </div>
+      <form [formGroup]="payeeForm"  (ngSubmit)="onSubmit(payeeForm)">
+      <div class="modal-body">
+        <mdb-form-control>
+            <label mdbLabel class="form-label" for="form1">Account Number</label>
+            <input mdbInput type="text" id="form1" class="form-control" formControlName="accountNumber" />
+           
+            
+          </mdb-form-control>
+          <mdb-form-control>
+            <label mdbLabel class="form-label" for="form1">IFSC</label>
+            <input mdbInput type="text" id="form1" class="form-control" formControlName="ifsc" />
+            
+          </mdb-form-control>
+          <mdb-form-control>
+            <label mdbLabel class="form-label" for="form1">Name</label>
+            <input mdbInput type="text" id="form1" class="form-control" formControlName="name" />
+        
+          </mdb-form-control>
+         
+      </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+          Close
+        </button>
+        <button *ngIf ="!existpayeeDetails"type="button" class="btn btn-primary" (click)="onSubmit(payeeForm) ">Save changes</button>
+        <button *ngIf = "existpayeeDetails" type="button" class="btn btn-primary" (click)="onUpdate(payeeForm)">update changes</button>
+      </div>
+   
+    
+   
+   

@@ -1,3 +1,9 @@
+<button style="margin: 5px;" class="btn btn-dark" (click)="handleAction('1')" >Add Payee</button>
+
+
+
+
+
 <div class="backdrop">
     <div class="">
       <!-- <div class="row"> -->
@@ -21,8 +27,8 @@
                       <td>{{ payee.ifsc }}</td>
                       <td>{{ payee.name }}</td>
                       <td><button class="btn-btn-primary" mat-button class="menu-button" [routerLink]="['/app/transfer',{accountNumber:payee.accountNumber,ifsc:payee.ifsc}]" routerLinkActive="router-link-active" >Transfer</button></td>
-                  
-                      
+                      <td><button class="btn-btn-primary" mat-button class="menu-button"  (click)="deleteById(payee.id)">Delete</button></td>
+                      <td><button class="btn-btn-primary" mat-button class="menu-button"  (click)="update(payee)">Update</button></td>
                     </tr>
                   </tbody>
                 </table>

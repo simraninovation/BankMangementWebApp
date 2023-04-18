@@ -9,13 +9,18 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountService } from './service/account-service.service';
 
+
+
+
 import { FrontPageComponent } from './pages/front-page/front-page.component';
 import { NavbarComponent } from './pages/front-page/navbar/navbar.component';
 import { BannerComponent } from './pages/front-page/banner/banner.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AuthService } from './service/auth.service';
 import { TransferFundComponent } from './pages/transfer-fund/transfer-fund.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { AddpayeeComponent } from './pages/payee-details/addpayee/addpayee.component';
+import { MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -29,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     BannerComponent,
     TransferFundComponent,
+  
    
           
   ],
@@ -42,6 +48,11 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     FormsModule,
     // NgModule,
+    ReactiveFormsModule,
+    MatDialogModule
+    
+    
+    
 
 
   ],

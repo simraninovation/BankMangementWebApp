@@ -9,8 +9,7 @@ import { accountModel } from '../../../model/account-model';
   styleUrls: ['./account-details.component.scss']
 })
 export class AccountDetailsComponent implements OnInit {
-
-  displayedColumns: string[] = ['id','rollno', 'name','semester','year'];
+  rows: Array<accountModel>
   dataSource : any
   accountsData:any;
   isloading = true
@@ -25,9 +24,10 @@ export class AccountDetailsComponent implements OnInit {
     this.accountService.getAccountDetails(userId).subscribe(data =>{
     this.isloading= false
     //  this.dataSource = new MatTableDataSource<accountModel>(data);
-     this.accountsData = data[0]
-     
-     console.log(this.accountsData)
+  
+     this.rows = data
+     console.log(this.rows)
+   
     })
   }
 

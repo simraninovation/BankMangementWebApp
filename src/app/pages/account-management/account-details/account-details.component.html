@@ -17,10 +17,11 @@
                   </thead>
                   <tbody>
                     <tr *ngIf="!isloading">
-                      <td>{{ accountsData.accountNumber }}</td>
-                      <td>{{ accountsData.branch }}</td>
-                      <td>{{ accountsData.ifci }}</td>
-                      <td>{{ accountsData.name }}</td>
+                      <tr *ngFor=" let account of rows">       
+                      <td>{{ account.accountNumber }}</td>
+                      <td>{{ account.branch }}</td>
+                      <td>{{ account.ifci }}</td>
+                      <td>{{ account.name }}</td>
                       
                     </tr>
                   </tbody>

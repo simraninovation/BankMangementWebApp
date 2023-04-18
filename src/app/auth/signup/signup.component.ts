@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { UserService } from '../../service/user.service';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { GlobalConstants } from '../../shared/GlobalConstants';
 
 @Component({
   selector: 'app-signup',
@@ -9,40 +11,49 @@ import { UserService } from '../../service/user.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  public user = {
-    firstName:'',
-    lastName:'',
-    email:'',
-    password:'',
-    phoneNo:'',
- };
+  //   public user = {
+  //     firstName:'',
+  //     lastName:'',
+  //     email:'',
+  //     password:'',
+  //     phoneNo:'',
+  //  };
+  password = true;
+  signupForm: any = UntypedFormGroup
+  responseMessage: any;
 
-  constructor( private authServce: AuthService,
-    private userService : UserService,
-    private router: Router ) { }
+
+
+  constructor(private formBuilder: UntypedFormBuilder, private router: Router,
+    private authServce: AuthService) {
+
+  }
 
   ngOnInit(): void {
-  }
-  formSubmit(){
-    if(this.user.email==''||this.user.email==null)
-    {
-      alert('Email is required!!')
-    }
-    alert('submit');
-  
-    this.authServce.register(this.user).subscribe(
-      (data)=>
+    this.signupForm = this.formBuilder.group({
+      firstName: [null, [Validators.required, Validators.pattern(GlobalConstants.firstNameRegex)]],
+      lastName: [null, [Validators.required, Validators.pattern(GlobalConstants.lastNameRegex)]],
+      email: [null, [Validators.required, Validators.pattern(GlobalConstants.emailRegex)]],
+      password: [null, [Validators.required]],
+      phoneNo: [null, [Validators.required, Validators.pattern(GlobalConstants.phoneNoRegex)]],
+    })
+  }  
+  handleSubmit() {
+    var formData = this.signupForm.value;    
+    this.authServce.register(formData).subscribe((response)=> {
       {
-        alert("Success");
-        this.router.navigateByUrl('auth/login')
+        this.responseMessage = response?.message;
+        
 
-      },
-      (error)=>{
-        console.log(error)
-        alert("SOMETHING WENT WRONG");
+      } (error: { error: { message: any; }; }) => {
+        if (error.error?.message) {
+          this.responseMessage = error.error?.message;
+        }
+        else {
+          this.responseMessage = GlobalConstants.genericError;
+        }
       }
-      
-    );
+      this.router.navigateByUrl('auth/login')
+    })
   }
-
 }

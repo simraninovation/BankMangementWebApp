@@ -36,33 +36,50 @@
                     <h1 class="text-center">Login Here!!</h1>
                     
                         <!--username field-->
+                        <div class ="container" style ="margin-left: 115px;">
 
-                        <form  class = "text-center" (ngSubmit)="formSubmit()" >
-                            <mat-form-field class ="full-width" appearance="fill">
-                                <mat-label>Email</mat-label>
-                                <input 
-                                [(ngModel)]="loginData.email"
-                                            name = "Email"matInput placeholder="Enter here">
-                             </mat-form-field>
-                            <br>
-
-                            <mat-form-field class ="full-width" appearance="fill">
-                                <mat-label>Password</mat-label>
-                                <input 
-                                [(ngModel)]="loginData.password"
-                                            name = "Password"matInput placeholder="Enter here">
-                             </mat-form-field>
+                        <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+                            <!-- this form group can be the error -->
+                            <div fxFlex fxLayout="column">
+                                <mat-form-field appearance="fill" fxFlex class="full-width">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput formControlName="email" required>
+                                    <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+                                    <span *ngIf="loginForm.controls.email.errors.required"> This field is Mandatory</span>
+                                    <span *ngIf="loginForm.controls.email.errors.pattern"> This field is Invalid</span>
+                                </mat-error>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field appearance="fill" fxFlex class="full-width">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput formControlName="password" type="password" required [type]="hide ? 'password' : 'text'">
+                                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>
+                                            {{hide ? 'visibility_off':'visibility'}}
+                                        </mat-icon>
+                                    </button>
+                                    <mat-error
+                                        *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+                                    <span *ngIf="loginForm.controls.password.errors.required"> This field is Mandatory</span>
+                                </mat-error>
+                                   </mat-form-field>
+                                   
+                      </div>
+                        </form>
+                      
                                 <br>
 
                                 <div class="container text-center">
-                                <button mat-raised-button color="primary" type="submit ">Login</button>
-                                <button style="margin-left:20px" mat-raised-button color="primary">Clear</button>
+                                <button style="margin-right:110px" mat-raised-button color="primary" (click)="formSubmit()">Login</button>
+                                <button style="margin-right:120px" mat-raised-button color="primary">Clear</button>
                                 <br>
                                 <br>                          
-                                <button mat-raised-button color="primary" (click)="signUp()" >SignUp</button>
+                                <button style="margin-right:110px" mat-raised-button color="primary" (click)="signUp()" >SignUp</button>
                                 </div>
+        
 
-                    </form>
+                
                 <!--</mat-card>-->
                 
                 
