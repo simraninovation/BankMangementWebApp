@@ -20,13 +20,20 @@
       <div class="modal-body">
         <mdb-form-control>
             <label mdbLabel class="form-label" for="form1">Account Number</label>
-            <input mdbInput type="text" id="form1" class="form-control" formControlName="accountNumber" />
+            <input  type="text" id="form1" class="form-control" formControlName="accountNumber" >
+          
+            <mat-error *ngIf="payeeForm.controls.accountNumber.touched && payeeForm.controls.accountNumber.invalid">
+                    <span *ngIf="payeeForm.controls.accountNumber.errors.required">This  field is mandatory</span>
+                    <span *ngIf="payeeForm.controls.accountNumber.errors.pattern">Th
+                    </span>is  field is invalid
+                       
+                    </mat-error>
            
             
           </mdb-form-control>
           <mdb-form-control>
             <label mdbLabel class="form-label" for="form1">IFSC</label>
-            <input mdbInput type="text" id="form1" class="form-control" formControlName="ifsc" />
+            <input  mdbInput type="text" id="form1" class="form-control" formControlName="ifsc" />
             
           </mdb-form-control>
           <mdb-form-control>

@@ -26,7 +26,7 @@
                       <td>{{ payee.accountNumber  }}</td>
                       <td>{{ payee.ifsc }}</td>
                       <td>{{ payee.name }}</td>
-                      <td><button class="btn-btn-primary" mat-button class="menu-button" [routerLink]="['/app/transfer',{accountNumber:payee.accountNumber,ifsc:payee.ifsc}]" routerLinkActive="router-link-active" >Transfer</button></td>
+                      <td><button class="btn-btn-primary" mat-button class="menu-button " [routerLink]="['/app/transfer',{accountNumber:payee.accountNumber,ifsc:payee.ifsc, id:accountholderId}]" routerLinkActive="router-link-active" >Transfer</button></td>
                       <td><button class="btn-btn-primary" mat-button class="menu-button"  (click)="deleteById(payee.id)">Delete</button></td>
                       <td><button class="btn-btn-primary" mat-button class="menu-button"  (click)="update(payee)">Update</button></td>
                     </tr>

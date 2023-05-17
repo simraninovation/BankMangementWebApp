@@ -16,11 +16,13 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class PayeeDetailsComponent implements OnInit {
 rows : Array<PayeeDetails>
 modalRef: MdbModalRef<AddpayeeComponent> | null = null;
+accountholderId:any
   constructor(
     private payeeDetailsService : PayeeDetailsService,
     private accountService : AccountService, private modalService:MdbModalService
   ) { }
 addpayee:boolean = false
+
   handleAction(id:any)
   { 
     this.addpayee = true;
@@ -43,8 +45,10 @@ addpayee:boolean = false
   getpayeeDetails(userId:any)
   {
     this.accountService.getAccountDetails(userId).subscribe(data => {
+
       console.log(data[0])
       let id = data[0].id
+      this.accountholderId = id
       this.payeeDetailsService.gettPayeeDetails(id).subscribe(data => {
         this.rows = data;      
        console.log(this.rows)
@@ -76,6 +80,7 @@ addpayee:boolean = false
     
 
   }
+  
 
   
 

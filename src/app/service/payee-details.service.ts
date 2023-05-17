@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { PayeeDetails } from '../model/payeeDetails-module';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +27,11 @@ export class PayeeDetailsService {
     const url = this.baseUrl +'/payee/create'
     const header ={
       'Authorization' : 'Bearer '+ localStorage.getItem('token')
+
      }
      let options = { headers: header }
-    return this.http.post(url,payee,options)
+    return this.http.post<any>(url,payee,options)
+    
 
   }
   public deleteById(accountId:number){

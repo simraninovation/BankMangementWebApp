@@ -23,4 +23,12 @@ export class TransactionService {
     }
     return this.http.get<transactionModel[]>(url, { headers: header })
 }
+public transferedAmount(transactionModel:any): Observable<any>{
+  let url = this.baseUrl + '/transactions/new' 
+  const header = {
+    'Authorization': 'Bearer ' + localStorage.getItem('token')
+  }
+  return this.http.post(url,transactionModel, {headers:header})
+  
+}
 }

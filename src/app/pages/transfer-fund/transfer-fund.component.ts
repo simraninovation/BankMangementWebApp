@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../service/account-service.service';
+import { transactionModel } from 'src/app/model/transaction-model';
+import { TransactionService } from 'src/app/service/transaction.service';
 
 @Component({
   selector: 'app-transfer-fund',
@@ -16,6 +18,12 @@ export class TransferFundComponent implements OnInit {
   accountUserId:any
   error:string
   isError = false
+  transactionModel:transactionModel = {
+    message:"",
+    amount:"",
+    createdDate:"",
+    accountId :""
+  }
   transferUserBalance:any
   currentUserBalance:any
   transferUserId:any
@@ -25,7 +33,7 @@ export class TransferFundComponent implements OnInit {
   }
   constructor(
     private accountService: AccountService,
-    // private transactionService: TransactionService,
+    private transactionService: TransactionService,
     private route: ActivatedRoute
   ) { }
 
@@ -36,6 +44,10 @@ export class TransferFundComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.fund.AccountNumber = params['accountNumber'];
       this.fund.IFSC = params['ifsc']
+      console.log(params)
+      this.transactionModel.accountId = {
+       id: params['id']
+      }
     });
 
 
@@ -80,6 +92,14 @@ export class TransferFundComponent implements OnInit {
 
 
     })
+  }
+  transfered()
+  {
+    this.transactionModel.message= "transfered"
+    this.transactionModel.amount = this.fund.Amount
+    
+    this.transactionService.transferedAmount(this.transactionModel).subscribe((data)=>{})
+
   }
 
 }
