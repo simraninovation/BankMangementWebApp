@@ -19,6 +19,7 @@ export class AddpayeeComponent implements OnInit {
   payeeDetails:PayeeDetailsModule
   existpayeeDetails:any
   error:string
+  isOtherBank:any=1
   isError = false
 
   constructor(private formBuilder: UntypedFormBuilder, public  modalRef: MdbModalRef<AddpayeeComponent>,
@@ -27,6 +28,12 @@ export class AddpayeeComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    if(this.existpayeeDetails?.ifsc!="SIB-12345"){
+      this.isOtherBank=2
+    }
+    else{
+      this.isOtherBank=1
+    }
     
     console.log(this.existpayeeDetails);
     // this.payeedetails.getexistPayeeDetails().subscribe(data=>{
@@ -56,16 +63,22 @@ export class AddpayeeComponent implements OnInit {
       if(data){
       console.log("data:",data)
       }
-       if(data == null ){
+       if(data == null && this.isOtherBank==1){
         this.isError = true
         this.error = "Account Number Not Found"
         alert(this.error)
        }
        else{
+       
         this.payeeDetails = payeeForm.value
+        if(this.isOtherBank==1){
+          this.payeeDetails['ifsc'] = "SIB-12345"
+
+        }
         this.payeeDetails['accountId'] = {"id":accountId}
          // console.log(this.payeeDetails)
          console.log(data)
+
       
            this.payeedetails.createPayee(this.payeeDetails).subscribe((result: any) => {
             console.log("result = ", result)
@@ -103,6 +116,13 @@ export class AddpayeeComponent implements OnInit {
     this.modalRef.close()
    window.location.reload();
 
+  }
+
+  abc(value:any)
+
+  {
+    console.log(value.value);
+    this.isOtherBank = value.value
   }
   
 

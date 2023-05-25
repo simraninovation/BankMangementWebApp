@@ -31,7 +31,7 @@
                 </div>
                 <h1 class="text-center">Transfer Here !!</h1>
 
-                <form class="text-center" (ngSubmit)="formSubmit()">
+                <form  class="text-center" (ngSubmit)="formSubmit()">
                     <div class="main-form">
                     <!--username field-->
                     <mat-form-field class="full-width" appearance="fill">
@@ -44,12 +44,21 @@
                         <mat-label >IFSC</mat-label>
                         <input matInput class="text-ifsc" [(ngModel)]="fund.IFSC" name="IFSC" matInput placeholder="Enter here" disabled>
                     </mat-form-field>
+                    
                     <br>
 
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Amount</mat-label>
-                        <input matInput class="text-amt" [(ngModel)]="fund.Amount" name="Amount" matInput placeholder="Enter here">
+                        <input type ="number" min ="1" matInput class="text-amt" [(ngModel)]="fund.Amount" name="Amount" matInput placeholder="Enter here" (change)="xyz($event.target)">
+                        <mat-error *ngIf=" isAmountEnter">
+                           
+                            <span *ngIf= "isAmountEnter">This  field is invalid
+                            </span>
+                               
+                            </mat-error>
                     </mat-form-field>
+                   
+                       
 
                 </div>
                     
@@ -60,7 +69,7 @@
                         <button mat-raised-button color="primary" type="submit" (click)="transfered()">Transfer</button>
                         <button style="margin-left:20px" mat-raised-button color="primary">Clear</button>
                     </div>
-                </form>
+                </form>"
                 <br/>
                 <br/>
                 <br/>

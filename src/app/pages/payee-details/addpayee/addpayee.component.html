@@ -16,11 +16,18 @@
           (click)="modalRef.close()"
         ></button>
       </div>
+      <label  for="SIB" >Simran Inovation Bank</label>
+            <input name="Name1" [checked]="existpayeeDetails?.ifsc=='SIB-12345'" type="radio" value="1" id="SIB" (change)="abc($event.target) ">
+            <br>
+            <label  for="other">Others</label>
+            <input name="Name1"  [checked]="existpayeeDetails?.ifsc!='SIB-12345'" type="radio" value="2" id="other" (change)="abc($event.target)">
       <form [formGroup]="payeeForm"  (ngSubmit)="onSubmit(payeeForm)">
+      
+        
       <div class="modal-body">
         <mdb-form-control>
-            <label mdbLabel class="form-label" for="form1">Account Number</label>
-            <input  type="text" id="form1" class="form-control" formControlName="accountNumber" >
+            <label mdbLabel  class="form-label" for="form1">Account Number</label>
+            <input  type="text"  id="form1" class="form-control" formControlName="accountNumber" >
           
             <mat-error *ngIf="payeeForm.controls.accountNumber.touched && payeeForm.controls.accountNumber.invalid">
                     <span *ngIf="payeeForm.controls.accountNumber.errors.required">This  field is mandatory</span>
@@ -31,9 +38,15 @@
            
             
           </mdb-form-control>
-          <mdb-form-control>
+          <mdb-form-control *ngIf="isOtherBank==2">
             <label mdbLabel class="form-label" for="form1">IFSC</label>
             <input  mdbInput type="text" id="form1" class="form-control" formControlName="ifsc" />
+            <mat-error *ngIf="payeeForm.controls.ifsc.touched && payeeForm.controls.ifsc.invalid">
+              <span *ngIf="payeeForm.controls.ifsc.errors.required">This  field is mandatory</span>
+              <span *ngIf="payeeForm.controls.ifsc.errors.pattern">This  field is invalid
+              </span>
+                 
+              </mat-error>
             
           </mdb-form-control>
           <mdb-form-control>
