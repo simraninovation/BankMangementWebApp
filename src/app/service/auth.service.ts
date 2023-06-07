@@ -13,6 +13,9 @@ export class AuthService {
   constructor(private http:HttpClient) {
     this.baseUrl = 'http://localhost:8088'
    }
+   
+ 
+
 
    public getToken(data:any): Observable<any>{
     let url = this.baseUrl + '/authenticate' 
@@ -22,6 +25,9 @@ export class AuthService {
    public register(data:any) : Observable<any>{
     let url = this.baseUrl + '/register' 
     return this.http.post(url,data)
+   }
+   public authguard(){
+    return localStorage.getItem('token')
    }
 
 

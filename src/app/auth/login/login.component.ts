@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       this.responseMessage = data?.message;
       localStorage.setItem('token', data.token)
       
+      
       this.userService.getCurrentUserDetails(formData.email).subscribe(userData => {
         console.log(formData.email)        
         console.log(userData)
@@ -55,6 +56,7 @@ export class LoginComponent implements OnInit {
             alert("Error: Account Not Avaliable for User")
             this.router.navigateByUrl('auth/login')
           }
+          
           else{
             console.log("accountData", accountData)
             let accountId = accountData[0]['id']

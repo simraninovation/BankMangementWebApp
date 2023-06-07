@@ -14,6 +14,7 @@ import { PayeeDetails } from '../../model/payeeDetails-module';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClientModule } from '@angular/common/http';
+import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 
 
@@ -43,11 +44,12 @@ payee = [{
   accountNumber : "123",
   ifsc: "BK01112675",
   name: "test",
-  accountId: account
+  accountId: account,
+  id: 1
 
 }]
 
-describe('PayeeDetailsComponent', () => {
+fdescribe('PayeeDetailsComponent', () => {
   let component: PayeeDetailsComponent;
   let fixture: ComponentFixture<PayeeDetailsComponent>;
   let accountTestService : AccountService
@@ -57,7 +59,8 @@ describe('PayeeDetailsComponent', () => {
       declarations: [ PayeeDetailsComponent ],
       providers:[
         AccountService,
-        PayeeDetailsService 
+        PayeeDetailsService,
+        MdbModalService
       ],
       imports:[
         MatInputModule,
@@ -66,6 +69,7 @@ describe('PayeeDetailsComponent', () => {
         MatProgressSpinnerModule,
         MatTableModule,
         HttpClientTestingModule
+        
         
       
        

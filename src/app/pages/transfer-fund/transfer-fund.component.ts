@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../service/account-service.service';
 import { transactionModel } from 'src/app/model/transaction-model';
-import { TransactionService } from 'src/app/service/transaction.service';
+import { TransactionService } from '../../service/transaction.service';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -25,7 +25,10 @@ export class TransferFundComponent implements OnInit {
     message:"",
     amount:"",
     createdDate:"",
-    accountId :""
+    accountId :"",
+    transactionType :"",
+    accountNumber:"",
+    toAccount:""
   }
   transferUserBalance:any
   currentUserBalance:any
@@ -122,8 +125,15 @@ export class TransferFundComponent implements OnInit {
       console.log("abc")
     this.transactionModel.message= "transfered"
     this.transactionModel.amount = this.fund.Amount
+    this.transactionModel.transactionType = "Dr"
+    this.transactionModel.toAccount =this.fund.AccountNumber
+    console.log(this.transactionModel)
     
-    this.transactionService.transferedAmount(this.transactionModel).subscribe((data)=>{})
+    this.transactionService.transferedAmount(this.transactionModel).subscribe((data)=>{
+      
+    })
+    this.transactionModel.accountId
+    alert("Your Money is transfered to Account "+" "+this.transactionModel.toAccount)
     }
     else
     {

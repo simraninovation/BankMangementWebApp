@@ -47,7 +47,10 @@ account = [{
 transaction = [{
   message: "Test Message",
   amount:"100",
-  createdDate:'01-02-2021',      
+  createdDate:'01-02-2021',     
+  transactionType: "Dr",
+    accountNumber:"12345",
+    toAccount: "1111",
   accountId:{
     account : account
   }

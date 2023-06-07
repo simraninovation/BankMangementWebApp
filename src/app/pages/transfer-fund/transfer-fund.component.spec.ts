@@ -15,7 +15,7 @@ import { UserModel } from '../../model/user-model';
 import { TransferFundComponent } from './transfer-fund.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // const accountService = jasmine.createSpyObj('AccountService',['getAccountDetails','getAccountByNumber','getAccountById','updateAccountBalance']);
 
 
@@ -62,7 +62,8 @@ describe('TransferFundComponent', () => {
         RouterTestingModule, 
         HttpClientTestingModule,
         BrowserAnimationsModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
       ]
     })
     .compileComponents();

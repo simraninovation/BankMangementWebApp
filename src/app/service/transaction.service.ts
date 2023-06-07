@@ -16,8 +16,8 @@ export class TransactionService {
     
     this.baseUrl = 'http://localhost:8088'
    }
-  public gettransactionDetails(accountId:any): Observable<transactionModel[]>{
-    const url = this.baseUrl + '/transaction/' + accountId
+  public gettransactionDetails(accountId:any,accountNumber:any): Observable<transactionModel[]>{
+    const url = this.baseUrl + '/transaction/' + accountId + '/' +accountNumber
     const header = {
       'Authorization': 'Bearer ' + localStorage.getItem('token')
     }

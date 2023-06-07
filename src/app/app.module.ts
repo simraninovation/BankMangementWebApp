@@ -21,6 +21,7 @@ import { TransferFundComponent } from './pages/transfer-fund/transfer-fund.compo
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AddpayeeComponent } from './pages/payee-details/addpayee/addpayee.component';
 import { MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
+import { PayeeDetailsService } from './service/payee-details.service';
 
 
 
@@ -63,7 +64,8 @@ import { MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/d
   ],
   providers: [
     AccountService,
-    AuthService
+    AuthService,
+    PayeeDetailsService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

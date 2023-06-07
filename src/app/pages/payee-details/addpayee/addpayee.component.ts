@@ -5,7 +5,9 @@ import { PayeeDetailsService } from '../../../service/payee-details.service';
 import { PayeeDetailsModule } from '../payee-details.module';
 import { PayeeDetails } from 'src/app/model/payeeDetails-module';
 import { GlobalConstants } from 'src/app/shared/GlobalConstants';
-import { AccountService } from 'src/app/service/account-service.service';
+//import { AccountService } from 'src/app/service/account-service.service';
+//import { AccountService } from '../'
+import { AccountService } from '../../../service/account-service.service';
 
 
 @Component({
@@ -21,6 +23,7 @@ export class AddpayeeComponent implements OnInit {
   error:string
   isOtherBank:any=1
   isError = false
+  resMsg:any
 
   constructor(private formBuilder: UntypedFormBuilder, public  modalRef: MdbModalRef<AddpayeeComponent>,
     private payeedetails:PayeeDetailsService, private accountService: AccountService) {
@@ -46,8 +49,8 @@ export class AddpayeeComponent implements OnInit {
   createform(){
     console.log("here is");
     this.payeeForm = this.formBuilder.group({
-      accountNumber: [{value:this.existpayeeDetails?.accountNumber?this.existpayeeDetails.accountNumber:null, disabled:this.existpayeeDetails?true:false},  [Validators.required, ]],
-      ifsc: [{value:this.existpayeeDetails?.ifsc?this.existpayeeDetails.ifsc:null, disabled:this.existpayeeDetails?true:false}, [Validators.required]],
+      accountNumber: [{value:this.existpayeeDetails?.accountNumber?this.existpayeeDetails.accountNumber:null, disabled:this.existpayeeDetails?true:false},  [Validators.required ,Validators.pattern(GlobalConstants.accountNumberRegex)]],
+      ifsc: [{value:this.existpayeeDetails?.ifsc?this.existpayeeDetails.ifsc:null, disabled:this.existpayeeDetails?true:false}, ],
       name: [this.existpayeeDetails?.name?this.existpayeeDetails.name:null, [Validators.required]],
 
       
@@ -81,7 +84,12 @@ export class AddpayeeComponent implements OnInit {
 
       
            this.payeedetails.createPayee(this.payeeDetails).subscribe((result: any) => {
-            console.log("result = ", result)
+            {
+            console.log("result = ", result);
+          }
+          
+        
+          
          })
           this.modalRef.close()
         window.location.reload();

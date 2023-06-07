@@ -1,7 +1,9 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { AfterViewInit, Component, OnInit,ViewChild  } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit,Output,ViewChild  } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 import { delay } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-navigation',
@@ -9,14 +11,16 @@ import { delay } from 'rxjs/operators';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements AfterViewInit {
+  @Output() isHeader = new EventEmitter<Boolean>()
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   matsidenavContainerRemove = false;
   matSidenavContainer = true;
-  constructor(private observer: BreakpointObserver) { }
+  constructor(private observer: BreakpointObserver,private router:Router) { }
 
   ngAfterViewInit() {
+    
     this.observer
       .observe(['(max-width: 800px)'])
       .pipe(delay(1))
@@ -36,6 +40,17 @@ export class NavigationComponent implements AfterViewInit {
           
         }
       });
+  }
+  fun(url:any)
+  {
+    
+    if(url)
+    {
+      this.isHeader.emit(true)
+    }
+    else{
+      this.isHeader.emit(false)
+    }
   }
 
 }

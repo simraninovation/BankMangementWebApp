@@ -1,6 +1,19 @@
 <app-header></app-header>
 <div style="display: flex; flex-grow: grow">
-    <app-navigation></app-navigation>
+    <app-navigation (isHeader)="abc($event)"></app-navigation>
     <router-outlet></router-outlet>
+    <div class="abc" *ngIf="isHeader">
+        <div class ="logo-container text-center">
+            <img src ="../../../assets/signuplogo.jpg" alt=""/>
+        </div>
+        <h1>WELCOME TO SIB BANK</h1>
+        <h3>Banking at your Fingertips</h3>
+        <h5>Online Banking</h5>
+        <h6>Easy Transactions</h6>
+
+    </div>
+    
 </div>
+
+
 <app-footer></app-footer>

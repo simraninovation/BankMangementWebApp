@@ -11,7 +11,9 @@
                     <tr>
                         <th scope="col">Date</th>
                         <th scope="col">Message</th>         
-                        <th scope="col">Amount</th>              
+                        <th scope="col">Amount</th>  
+                        <th scope="col">ToAccount</th>   
+                        <th scope="col">TransactionType</th>          
                       </tr>
                     </thead>
                     <tbody>
@@ -19,9 +21,13 @@
                         <td>{{ transaction.createdDate }}</td>
                         <td>{{ transaction.message }}</td>
                         <td>{{ transaction.amount }}</td>
+                        <td>{{ transaction.toAccount }}</td>
+                        
+                        <td >{{currentAccountNo!=transaction.toAccount?transaction.transactionType:'Cr' }}</td>
                     
                         
                       </tr>
+                      
                     </tbody>
                   </table>
                 </div>

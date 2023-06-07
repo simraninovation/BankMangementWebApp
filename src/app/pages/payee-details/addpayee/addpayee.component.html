@@ -31,8 +31,8 @@
           
             <mat-error *ngIf="payeeForm.controls.accountNumber.touched && payeeForm.controls.accountNumber.invalid">
                     <span *ngIf="payeeForm.controls.accountNumber.errors.required">This  field is mandatory</span>
-                    <span *ngIf="payeeForm.controls.accountNumber.errors.pattern">Th
-                    </span>is  field is invalid
+                    <span *ngIf="payeeForm.controls.accountNumber.errors.pattern">This field is invalid 
+                    </span>
                        
                     </mat-error>
            
@@ -61,7 +61,7 @@
         <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
           Close
         </button>
-        <button *ngIf ="!existpayeeDetails"type="button" class="btn btn-primary" (click)="onSubmit(payeeForm) ">Save changes</button>
+        <button *ngIf ="!existpayeeDetails"type="button" class="btn btn-primary"[disabled]="payeeForm.invalid" (click)="onSubmit(payeeForm) ">Save changes</button>
         <button *ngIf = "existpayeeDetails" type="button" class="btn btn-primary" (click)="onUpdate(payeeForm)">update changes</button>
       </div>
    

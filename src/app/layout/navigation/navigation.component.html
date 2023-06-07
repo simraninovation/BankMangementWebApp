@@ -14,24 +14,24 @@
         <br>
         <h1 class="name"><b></b></h1>        
         <mat-divider></mat-divider>
-        <button mat-button class="menu-button" [routerLink]="['/app/home']" routerLinkActive="router-link-active">
+        <button mat-button class="menu-button" [routerLink]="['/app']" routerLinkActive="router-link-active" (click)="fun('home')">
             <mat-icon>home</mat-icon>
             <span>Home</span>
         </button>
-        <button mat-button class="menu-button" [routerLink]="['/app/accountManagement/accountDetails']" routerLinkActive="router-link-active" >
+        <button mat-button class="menu-button" [routerLink]="['/app/accountManagement/accountDetails']" routerLinkActive="router-link-active" (click)="fun(null)" >
             <mat-icon>person</mat-icon>
             <span>Account Details</span>
         </button>
-        <button mat-button class="menu-button" [routerLink]="['/app/balance']" routerLinkActive="router-link-active" >            
+        <button mat-button class="menu-button" [routerLink]="['/app/balance']" routerLinkActive="router-link-active" (click)="fun(null)">            
             <mat-icon>assignment_turned_in</mat-icon>
             <span>Balance</span>
         </button>
        <mat-divider></mat-divider>       
-        <button mat-button class="menu-button" [routerLink]="['/app/transaction']" routerLinkActive="router-link-active"  >
+        <button mat-button class="menu-button" [routerLink]="['/app/transaction']" routerLinkActive="router-link-active"  (click)="fun(null)">
             <mat-icon>assignment_ind</mat-icon>
             <span>Transactions</span>
         </button>
-        <button mat-button class="menu-button" [routerLink]="['/app/payeeDetails']" routerLinkActive="router-link-active" >
+        <button mat-button class="menu-button" [routerLink]="['/app/payeeDetails']" routerLinkActive="router-link-active" (click)="fun(null)" >
             <mat-icon>assignment</mat-icon>
             <span>Transfer Money</span>
         </button>

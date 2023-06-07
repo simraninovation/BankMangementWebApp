@@ -13,6 +13,7 @@ import { TransactionService } from '../../service/transaction.service';
 })
 export class TransactionComponent implements OnInit {
   rows : Array<transactionModel>
+  currentAccountNo : any
   
   // transactionData = {
   //   createdDate: "",
@@ -38,13 +39,17 @@ export class TransactionComponent implements OnInit {
 
     this.accountService.getAccountDetails(userId).subscribe(data => {
       console.log(data[0])
+      this.currentAccountNo = data[0].accountNumber
 
-      this.transactionService.gettransactionDetails(data[0].id).subscribe(data => {
+      this.transactionService.gettransactionDetails(data[0].id,data[0].accountNumber).subscribe(data => {
         this.rows = data;      
        
       })
 
     })
+
+
+          
     
   }
 }

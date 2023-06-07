@@ -11,6 +11,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { AddpayeeComponent } from './addpayee/addpayee.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PayeeDetailsService } from 'src/app/service/payee-details.service';
 
 
 const PAYEE_ROUTE = [
@@ -38,6 +39,11 @@ const PAYEE_ROUTE = [
     // RouterModule,
     RouterModule.forChild(PAYEE_ROUTE)
   ],
+  providers:[
+    PayeeDetailsService
+
+  ],
+  
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PayeeDetailsModule { }
