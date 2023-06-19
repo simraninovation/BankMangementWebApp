@@ -4,6 +4,8 @@ import { forkJoin } from 'rxjs';
 import { transactionModel } from 'src/app/model/transaction-model';
 import { AccountService } from '../../service/account-service.service';
 import { TransactionService } from '../../service/transaction.service';
+import { saveAs } from 'file-saver';
+import jsPDF from 'jspdf';
 
 
 @Component({
@@ -25,7 +27,8 @@ export class TransactionComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private transactionService: TransactionService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    
   ) { }
 
   ngOnInit() {
@@ -50,6 +53,26 @@ export class TransactionComponent implements OnInit {
 
 
           
+    
+  }
+  p:any=1
+  page(val:any){
+    console.log(val)
+    this.p=val
+
+  }
+  downloadMyFile(){
+   
+    const doc = new jsPDF("p", "pt", "a4");
+    const source:HTMLElement = document.getElementById("content") as HTMLElement;
+    
+    doc.setFontSize(12)
+    doc.html(source, {
+      callback: function(pdf) {
+        doc.save("transaction"); 
+      }
+    });
+    
     
   }
 }

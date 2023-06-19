@@ -16,6 +16,7 @@ import { UserModel } from '../../model/user-model';
 
 import { of } from 'rxjs';
 import { transactionModel } from '../../model/transaction-model';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 // const accountService = jasmine.createSpyObj('AccountService',['getAccountDetails']);
 // const transactionService = jasmine.createSpyObj('TransactionService',['gettransactionDetails']);
@@ -78,6 +79,7 @@ describe('TransactionComponent', () => {
         MatTableModule,
         HttpClientTestingModule ,
         RouterTestingModule, 
+        NgxPaginationModule,
          
       ]
     })

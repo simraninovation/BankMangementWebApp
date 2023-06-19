@@ -4,6 +4,7 @@ import { AccountService } from '../../service/account-service.service';
 import { transactionModel } from 'src/app/model/transaction-model';
 import { TransactionService } from '../../service/transaction.service';
 import { FormBuilder } from '@angular/forms';
+import { constant } from '../../model/constant';
 
 @Component({
   selector: 'app-transfer-fund',
@@ -15,7 +16,8 @@ export class TransferFundComponent implements OnInit {
   public fund = {
     AccountNumber: '',
     IFSC: '',
-    Amount: ''
+    Amount: '',
+    isOtherBank: false
   };
   accountUserId:any
   error:string
@@ -52,6 +54,7 @@ export class TransferFundComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.fund.AccountNumber = params['accountNumber'];
       this.fund.IFSC = params['ifsc']
+      this.fund.isOtherBank =params['isOtherBank']
       console.log(params)
       this.transactionModel.accountId = {
        id: params['id']
@@ -68,12 +71,12 @@ export class TransferFundComponent implements OnInit {
     this.accountService.getAccountByNumber(this.fund.AccountNumber).subscribe(data => {
       console.log(this.fund)
       console.log("this-->",data)
-      if((data == null || data == undefined)&&(this.fund.IFSC=="SIB-12345")){
+      if((data == null || data == undefined)&&(!this.fund.isOtherBank)){
         this.isError = true
         this.error = "Account Number Not Found"
       }
       else{
-        if(this.fund.IFSC=="SIB-12345")
+        if(!this.fund.isOtherBank)
         {
         this.transferUserBalance =  parseInt(data['balance']) + parseInt(this.fund.Amount)
         
@@ -90,13 +93,15 @@ export class TransferFundComponent implements OnInit {
           this.error = "Insufficient Funds In Account"
         }
         else{
+          this.isError = false;
           console.log("********* ", parseInt(this.fund.AccountNumber) - parseInt(this.currentUserBalance))
           this.currentUserBalance = parseInt(this.currentUserBalance) - parseInt(this.fund.Amount)
           console.log("-------------------->",this.transferUserId)
           this.dataUpdate.id = this.transferUserId
           this.dataUpdate.balance = this.transferUserBalance
           console.log(this.dataUpdate)
-          if(this.fund.IFSC=="SIB-12345")
+          this.transfered()
+          if(!this.fund.isOtherBank)
           {
           this.accountService.updateAccountBalance(this.dataUpdate).subscribe((data)=>{})
           }
@@ -123,9 +128,9 @@ export class TransferFundComponent implements OnInit {
     console.log(Number(this.fund.Amount)>0)
     if(Number(this.fund.Amount)>0){
       console.log("abc")
-    this.transactionModel.message= "transfered"
+    this.transactionModel.message= constant.TRANSFERED
     this.transactionModel.amount = this.fund.Amount
-    this.transactionModel.transactionType = "Dr"
+    this.transactionModel.transactionType = constant.DEBITED
     this.transactionModel.toAccount =this.fund.AccountNumber
     console.log(this.transactionModel)
     
@@ -147,6 +152,7 @@ export class TransferFundComponent implements OnInit {
     console.log(value.value)
        if(value.value>0)
        {
+        this.isError = false;
           this.isAmountEnter=false;
           
        }
@@ -154,5 +160,6 @@ export class TransferFundComponent implements OnInit {
         this.isAmountEnter=true;
        }
   }
+
 
 }

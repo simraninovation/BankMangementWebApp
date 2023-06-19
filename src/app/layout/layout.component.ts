@@ -14,13 +14,13 @@ isHeader:boolean
   }
 
   ngOnInit(): void {
-  
-   
+    if(this.router.url=='/app'){
+   this.isHeader=true;
+    }
   
   }
   abc(val:any)
   {
-    console.log(val)
     this.isHeader=val
   }
  

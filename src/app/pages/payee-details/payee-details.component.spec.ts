@@ -45,7 +45,8 @@ payee = [{
   ifsc: "BK01112675",
   name: "test",
   accountId: account,
-  id: 1
+  id: 1,
+  isOtherBank: false
 
 }]
 

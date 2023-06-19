@@ -46,21 +46,20 @@ export class LoginComponent implements OnInit {
       
       
       this.userService.getCurrentUserDetails(formData.email).subscribe(userData => {
-        console.log(formData.email)        
-        console.log(userData)
         let Id = userData['id']
-        localStorage.setItem('user', JSON.stringify(userData))
-        console.log(".Id",Id)        
+        localStorage.setItem('user', JSON.stringify(userData))       
         this.accountService.getAccountDetails(Id).subscribe(accountData => {
+          let data:any=accountData[0]
           if(accountData == null || accountData == undefined || accountData.length==0){
             alert("Error: Account Not Avaliable for User")
             this.router.navigateByUrl('auth/login')
           }
           
           else{
-            console.log("accountData", accountData)
-            let accountId = accountData[0]['id']
+          
+            let accountId = data['id']
             localStorage.setItem('accountId', JSON.stringify(accountId))  
+            
           }
           
         })
@@ -70,10 +69,10 @@ export class LoginComponent implements OnInit {
       })
 
     }, error => {
-      this.responseMessage = error.error?.message;
+      this.responseMessage = error.message;
     },
       () => {
-        this.router.navigateByUrl('app')
+        this.router.navigateByUrl('/app')
       }
     )
   }

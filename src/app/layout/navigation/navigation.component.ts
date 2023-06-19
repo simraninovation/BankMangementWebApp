@@ -12,6 +12,8 @@ import { delay } from 'rxjs/operators';
 })
 export class NavigationComponent implements AfterViewInit {
   @Output() isHeader = new EventEmitter<Boolean>()
+  //making my changes
+  
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
@@ -20,7 +22,6 @@ export class NavigationComponent implements AfterViewInit {
   constructor(private observer: BreakpointObserver,private router:Router) { }
 
   ngAfterViewInit() {
-    
     this.observer
       .observe(['(max-width: 800px)'])
       .pipe(delay(1))

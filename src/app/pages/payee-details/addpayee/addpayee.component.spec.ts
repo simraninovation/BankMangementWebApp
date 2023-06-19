@@ -3,9 +3,9 @@
 import { AddpayeeComponent } from './addpayee.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
-import { MatDialogRef } from '@angular/material/dialog';
 import { PayeeDetailsService } from '../../../service/payee-details.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 //import { PayeeDetailsService } from 'src/app/service/payee-details.service';
 
 describe('AddpayeeComponent', () => {
@@ -21,7 +21,8 @@ describe('AddpayeeComponent', () => {
          ReactiveFormsModule,
          HttpClientModule
          
-      ]
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
 

@@ -91,7 +91,8 @@ describe('TransferFundComponent', () => {
     let values = {
       AccountNumber: '1',
       IFSC: 'test',
-      Amount: '100'
+      Amount: '100',
+      isOtherBank: false
     }
     component.fund = values
     component.formSubmit()
@@ -107,7 +108,8 @@ describe('TransferFundComponent', () => {
     let values = {
       AccountNumber: '1',
       IFSC: 'test',
-      Amount: '100'
+      Amount: '100',
+      isOtherBank: false
     }
     let data ={
       "id": "1",

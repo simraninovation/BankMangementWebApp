@@ -4,7 +4,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { PayeeDetailsService } from '../../../service/payee-details.service';
 import { PayeeDetailsModule } from '../payee-details.module';
 import { PayeeDetails } from 'src/app/model/payeeDetails-module';
-import { GlobalConstants } from 'src/app/shared/GlobalConstants';
+import { GlobalConstants } from '../../../shared/GlobalConstants';
 //import { AccountService } from 'src/app/service/account-service.service';
 //import { AccountService } from '../'
 import { AccountService } from '../../../service/account-service.service';
@@ -31,7 +31,7 @@ export class AddpayeeComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    if(this.existpayeeDetails?.ifsc!="SIB-12345"){
+    if(!this.existpayeeDetails?.isOtherBank){
       this.isOtherBank=2
     }
     else{
@@ -52,6 +52,7 @@ export class AddpayeeComponent implements OnInit {
       accountNumber: [{value:this.existpayeeDetails?.accountNumber?this.existpayeeDetails.accountNumber:null, disabled:this.existpayeeDetails?true:false},  [Validators.required ,Validators.pattern(GlobalConstants.accountNumberRegex)]],
       ifsc: [{value:this.existpayeeDetails?.ifsc?this.existpayeeDetails.ifsc:null, disabled:this.existpayeeDetails?true:false}, ],
       name: [this.existpayeeDetails?.name?this.existpayeeDetails.name:null, [Validators.required]],
+      isOtherBank: [false]
 
       
       
@@ -74,8 +75,12 @@ export class AddpayeeComponent implements OnInit {
        else{
        
         this.payeeDetails = payeeForm.value
+      
         if(this.isOtherBank==1){
-          this.payeeDetails['ifsc'] = "SIB-12345"
+    
+          this.payeeDetails['isOtherBank'] = true
+          delete this.payeeDetails['ifsc']
+
 
         }
         this.payeeDetails['accountId'] = {"id":accountId}

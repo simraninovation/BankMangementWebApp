@@ -4,4 +4,5 @@ export interface PayeeDetails {
     name: string
     accountId:object
     id:number
+    isOtherBank:boolean
 }
