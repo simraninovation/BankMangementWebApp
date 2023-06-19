@@ -4,7 +4,6 @@ import { forkJoin } from 'rxjs';
 import { transactionModel } from 'src/app/model/transaction-model';
 import { AccountService } from '../../service/account-service.service';
 import { TransactionService } from '../../service/transaction.service';
-import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
 
 
