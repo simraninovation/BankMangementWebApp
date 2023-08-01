@@ -21,8 +21,7 @@ export class PayeeDetailsService {
     }
     return this.http.get<PayeeDetails[]>(url, { headers: header })
 }
-// i will create methd createpayee(payee:payeeDetails):Observable<any>{
-  //const url = this.baseUrl + '/payee/create'
+
   public createPayee(payee:any):Observable<any>{
     const url = this.baseUrl +'/payee/create'
     const header ={

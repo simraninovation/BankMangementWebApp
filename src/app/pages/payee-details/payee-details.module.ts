@@ -12,6 +12,8 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { AddpayeeComponent } from './addpayee/addpayee.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PayeeDetailsService } from 'src/app/service/payee-details.service';
+import { NotificationPopupComponent } from './notification-popup/notification-popup.component';
+
 
 
 const PAYEE_ROUTE = [
@@ -22,7 +24,7 @@ const PAYEE_ROUTE = [
 
 
 @NgModule({
-  declarations: [PayeeDetailsComponent, AddpayeeComponent],
+  declarations: [PayeeDetailsComponent, AddpayeeComponent,NotificationPopupComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -32,11 +34,8 @@ const PAYEE_ROUTE = [
     MdbFormsModule,
     ReactiveFormsModule,
     FormsModule,
+   
   
-
-    
-    
-    // RouterModule,
     RouterModule.forChild(PAYEE_ROUTE)
   ],
   providers:[

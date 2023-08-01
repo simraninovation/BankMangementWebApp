@@ -16,13 +16,6 @@ export class TransactionComponent implements OnInit {
   rows : Array<transactionModel>
   currentAccountNo : any
   
-  // transactionData = {
-  //   createdDate: "",
-  //   message: "",
-  //   amount: ""
-
-
-  // };
   constructor(
     private accountService: AccountService,
     private transactionService: TransactionService,

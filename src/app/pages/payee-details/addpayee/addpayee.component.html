@@ -8,7 +8,7 @@
    
     
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Details for payee</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style=" font-weight: bold; font-size: large;">Add Details for payee</h5>
         <button
           type="button"
           class="btn-close"
@@ -16,11 +16,14 @@
           (click)="modalRef.close()"
         ></button>
       </div>
-      <label  for="SIB" >Simran Inovation Bank</label>
-            <input name="Name1" [checked]="existpayeeDetails?.ifsc=='SIB-12345'" type="radio" value="1" id="SIB" (change)="abc($event.target) ">
+   <div class="radio-button">
+            <input name="Name1" [checked]="isOtherBank==1" type="radio" value="1" id="SIB" (change)="checkbank($event.target) ">
+            <label  for="SIB" >Simran Inovation Bank</label>
             <br>
+          
+            <input name="Name1"  [checked]="isOtherBank==2" type="radio" value="2" id="other" (change)="checkbank($event.target)">
             <label  for="other">Others</label>
-            <input name="Name1"  [checked]="existpayeeDetails?.ifsc!='SIB-12345'" type="radio" value="2" id="other" (change)="abc($event.target)">
+    </div>
       <form [formGroup]="payeeForm"  (ngSubmit)="onSubmit(payeeForm)">
       
         

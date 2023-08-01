@@ -1,31 +1,6 @@
-<!-- Grey with black text
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <div class="container">
-    <div class="container-fluid">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/">myBank</a>
-            </li>
-            <li class="nav-item">
-            
-                <a class="nav-link" routerLink="/login">Login</a>
-            </li>
-            <li class="nav-item">
-
-                <a class="nav-link" routerLink="/signup">Sign Up</a>  
-            </li>
-        </ul>
-    </div>
-</div>
-</nav> -->
-
-
-
-
-
 
 <div class ="bootstrap-wrapper">
-    <div class="container">
+    <div class=" container" >
         <div class ="row" style ="margin-top: 20px;">
             <div class="col-md-6 offset-md-3">
             
@@ -40,7 +15,7 @@
 
                         <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
                             <!-- this form group can be the error -->
-                            <div fxFlex fxLayout="column">
+                            <div fxFlex fxLayout="column" class="form-wrapper">
                                 <mat-form-field appearance="fill" fxFlex class="full-width">
                                     <mat-label>Email</mat-label>
                                     <input matInput formControlName="email" required>
@@ -70,12 +45,12 @@
                       
                                 <br>
 
-                                <div class="container text-center">
-                                <button style="margin-right:110px" mat-raised-button color="primary" (click)="formSubmit()">Login</button>
-                                <button style="margin-right:120px" mat-raised-button color="primary">Clear</button>
+                                <div class="container text-center" >
+                                <button style="margin-right:5em" mat-raised-button color="primary" (click)="formSubmit()">Login</button>
+                                <button style="margin-right:20em" mat-raised-button color="primary">Clear</button>
                                 <br>
                                 <br>                          
-                                <button style="margin-right:110px" mat-raised-button color="primary" (click)="signUp()" >SignUp</button>
+                                <button style="margin-right:20em" mat-raised-button color="primary" (click)="signUp()" >SignUp</button>
                                 </div>
         
 

@@ -11,13 +11,7 @@ import { GlobalConstants } from '../../shared/GlobalConstants';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  //   public user = {
-  //     firstName:'',
-  //     lastName:'',
-  //     email:'',
-  //     password:'',
-  //     phoneNo:'',
-  //  };
+ 
   password = true;
   signupForm: any = UntypedFormGroup
   responseMessage: any;

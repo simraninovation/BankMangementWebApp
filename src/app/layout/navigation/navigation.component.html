@@ -1,15 +1,6 @@
-<mat-toolbar class="mat-elevation-z8 custom-top">
-    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-        <mat-icon *ngIf="!sidenav.opened">
-            menu
-        </mat-icon>
-        <mat-icon *ngIf="sidenav.opened">
-            close
-        </mat-icon>
-    </button>
-</mat-toolbar>
-<mat-sidenav-container [ngClass]="{'mat-sidenav-container mat-drawer-content mat-sidenav-content ng-star-inserted': matSidenavContainer,'mat-sidenav-container-remove':matsidenavContainerRemove}">
-    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+
+ <div >
+    <div  class="mat-elevation-z8 abc"> 
 
         <br>
         <h1 class="name"><b></b></h1>        
@@ -36,5 +27,5 @@
             <span>Transfer Money</span>
         </button>
         
-        </mat-sidenav>
-</mat-sidenav-container>
+    </div>
+         </div>

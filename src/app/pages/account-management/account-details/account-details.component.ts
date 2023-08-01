@@ -10,7 +10,6 @@ import { accountModel } from '../../../model/account-model';
 })
 export class AccountDetailsComponent implements OnInit {
   rows: Array<accountModel>
-  dataSource : any
   accountsData:any;
   isloading = true
   constructor(private accountService : AccountService) { }
@@ -23,8 +22,6 @@ export class AccountDetailsComponent implements OnInit {
     console.log(userId)
     this.accountService.getAccountDetails(userId).subscribe(data =>{
     this.isloading= false
-    //  this.dataSource = new MatTableDataSource<accountModel>(data);
-  
      this.rows = data
      console.log(this.rows)
    

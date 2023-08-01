@@ -15,10 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-// const authService = jasmine.createSpyObj('AuthService',['register']);
-// const accountService = jasmine.createSpyObj('AccountService',['getAccountDetails']);
-// const userService = jasmine.createSpyObj('AccountService',['getAccountDetails']);
-
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;

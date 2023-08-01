@@ -22,6 +22,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AddpayeeComponent } from './pages/payee-details/addpayee/addpayee.component';
 import { MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
 import { PayeeDetailsService } from './service/payee-details.service';
+import { CompdirectiveDirective } from './compdirective.directive';
+
 
 
 
@@ -35,6 +37,8 @@ import { PayeeDetailsService } from './service/payee-details.service';
     NavbarComponent,
     BannerComponent,
     TransferFundComponent,
+    CompdirectiveDirective,
+  
   
    
           

@@ -19,7 +19,7 @@ isHeader:boolean
     }
   
   }
-  abc(val:any)
+  isHome(val:any)
   {
     this.isHeader=val
   }

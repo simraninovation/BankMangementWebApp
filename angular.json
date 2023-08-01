@@ -31,7 +31,11 @@
               "src/assets"
             ],
             "allowedCommonJsDependencies": [
-              "lodash"
+              "lodash",
+              "rgbcolor",
+              "html2canvas",
+              "dompurify",
+              "raf"
            ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",

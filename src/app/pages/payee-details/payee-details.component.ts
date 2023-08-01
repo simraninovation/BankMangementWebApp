@@ -7,6 +7,8 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 import { AddpayeeComponent } from './addpayee/addpayee.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationPopupComponent } from './notification-popup/notification-popup.component';
+
 
 @Component({
   selector: 'app-payee-details',
@@ -23,47 +25,48 @@ accountholderId:any
   ) { }
 addpayee:boolean = false
 
-  handleAction(id:any)
+  handleAction()
   { 
-    this.addpayee = true;
+  
      this.modalService.open(AddpayeeComponent);
      
 
   }
+  confirmationPopup(id:any)
+  { 
+  
+     this.modalService.open(NotificationPopupComponent,{
+      data:{id:id}
+     })
+     this.ngOnInit();
+     
+
+  }
+  
 
   ngOnInit() {
     this.rows = [];
-    let userId = localStorage.getItem('user');
-    if (userId != null) {
-      userId = JSON.parse(userId).id
-    }
-    console.log(userId)
-    this.getpayeeDetails(userId);
+    let accountId = localStorage.getItem('accountId');
+    this.getpayeeDetails(accountId);
+    
 
     
   }
-  getpayeeDetails(userId:any)
+  getpayeeDetails(accountId:any)
   {
-    this.accountService.getAccountDetails(userId).subscribe(data => {
-
-      console.log(data[0])
-      let id = data[0].id
-      this.accountholderId = id
-      this.payeeDetailsService.gettPayeeDetails(id).subscribe(data => {
+    
+      this.payeeDetailsService.gettPayeeDetails(accountId).subscribe(data => {
         this.rows = data;      
-       console.log(this.rows)
+    
       })
 
-    })
   }
-  deleteById(accountId:number){
-    this.payeeDetailsService.deleteById(accountId).subscribe(data=>{
-      // {
-      //   let userId = localStorage.getItem('user');
-      //   this.getpayeeDetails(userId);
-      // }
+  deleteById(payeeAccountId:number){
+    this.payeeDetailsService.deleteById(payeeAccountId).subscribe(data=>{
       this.ngOnInit();
+      
     })
+    alert("Are you sure you want to delete this payee")
   }
   a:any
   update(payeeDetails:any)
@@ -71,12 +74,12 @@ addpayee:boolean = false
   
   {
     this.payeeDetailsService.setexistPayeeDetails(payeeDetails);
-    console.log(payeeDetails);
+  
 
     this.modalService.open(AddpayeeComponent, {
       data:{existpayeeDetails:payeeDetails}
      });
-  //  this.modalService.
+ 
     
 
   }

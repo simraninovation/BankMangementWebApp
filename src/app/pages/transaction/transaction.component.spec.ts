@@ -18,8 +18,7 @@ import { of } from 'rxjs';
 import { transactionModel } from '../../model/transaction-model';
 import { NgxPaginationModule } from 'ngx-pagination';
 
-// const accountService = jasmine.createSpyObj('AccountService',['getAccountDetails']);
-// const transactionService = jasmine.createSpyObj('TransactionService',['gettransactionDetails']);
+
 let accountService : any
 let transactionService: any
 

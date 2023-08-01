@@ -94,9 +94,8 @@ export class TransferFundComponent implements OnInit {
         }
         else{
           this.isError = false;
-          console.log("********* ", parseInt(this.fund.AccountNumber) - parseInt(this.currentUserBalance))
+        
           this.currentUserBalance = parseInt(this.currentUserBalance) - parseInt(this.fund.Amount)
-          console.log("-------------------->",this.transferUserId)
           this.dataUpdate.id = this.transferUserId
           this.dataUpdate.balance = this.transferUserBalance
           console.log(this.dataUpdate)
@@ -127,7 +126,6 @@ export class TransferFundComponent implements OnInit {
   {
     console.log(Number(this.fund.Amount)>0)
     if(Number(this.fund.Amount)>0){
-      console.log("abc")
     this.transactionModel.message= constant.TRANSFERED
     this.transactionModel.amount = this.fund.Amount
     this.transactionModel.transactionType = constant.DEBITED

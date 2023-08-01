@@ -5,8 +5,6 @@ import { PayeeDetailsService } from '../../../service/payee-details.service';
 import { PayeeDetailsModule } from '../payee-details.module';
 import { PayeeDetails } from 'src/app/model/payeeDetails-module';
 import { GlobalConstants } from '../../../shared/GlobalConstants';
-//import { AccountService } from 'src/app/service/account-service.service';
-//import { AccountService } from '../'
 import { AccountService } from '../../../service/account-service.service';
 
 
@@ -39,11 +37,6 @@ export class AddpayeeComponent implements OnInit {
     }
     
     console.log(this.existpayeeDetails);
-    // this.payeedetails.getexistPayeeDetails().subscribe(data=>{
-    //   this.existpayeeDetails = data;
-    //   console.log(this.existpayeeDetails,"here");
-    
-    //  })
     this.createform();
   }
   createform(){
@@ -84,7 +77,7 @@ export class AddpayeeComponent implements OnInit {
 
         }
         this.payeeDetails['accountId'] = {"id":accountId}
-         // console.log(this.payeeDetails)
+        
          console.log(data)
 
       
@@ -101,18 +94,8 @@ export class AddpayeeComponent implements OnInit {
 
        }
     })
-    // if(accountId != null){
-    //   accountId = JSON.parse(accountId).id   
-    // }
-  // this.payeeDetails = payeeForm.value
-  // this.payeeDetails['accountId'] = {"id":accountId}
-  //  // console.log(this.payeeDetails)
-
-  //   this.payeedetails.createPayee(this.payeeDetails).subscribe((result: any) => {
-  //     console.log("result = ", result)
-  //   })
-  //   this.modalRef.close()
-  //  //window.location.reload();
+ 
+  
 
   }
   onUpdate(payeeForm:any){
@@ -131,7 +114,7 @@ export class AddpayeeComponent implements OnInit {
 
   }
 
-  abc(value:any)
+  checkbank(value:any)
 
   {
     console.log(value.value);
